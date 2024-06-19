@@ -1,0 +1,13 @@
+name: Sync with Upstream
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: "0 0 * * 0"
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Sync with Upstream
+              run: gh repo sync graphemecluster/github-readme-stats --source anuraghazra/github-readme-stats --force
+              env:
+                  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
